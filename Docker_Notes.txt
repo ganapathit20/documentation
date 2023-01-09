@@ -1,0 +1,88 @@
+Docker Notes:
+
+{docker run -p 8080:3306 -e MYSQL_ROOT_PASSWORD=welcome123 --name=mysql (mysql image name) --> mysql image runing}
+
+version --> docker --version
+
+run ---> docker run -p 5000:5000 (ur image name) 
+
+run ---> docker run -d -p 5000:5000 (ur image name) if u use run background if u see this log use below cmd
+
+log  --> docker logs (container id) or docker logs -f (container id)
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+images --> docker images
+
+download image --> docker pull (image name)
+
+search any image like --> deocker search (image name)
+
+image history -> docker image history (repo name : tags) or docker image history (image id)
+
+inspect  image --> docker image inspect (image id)
+
+remove image --> docker image remove (image name or id)
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+container list --> docker container ls
+
+all container list --> docker container ls -a
+
+container start --> docker container start (container id)
+
+container stop --> docker container stop (container id)
+
+delete container --> docker container rm (container id)
+
+pause container --> docker container pause (container id)
+
+unpause container --> docker container unpause (container id)
+
+inspect container --> docker container inspect container id)
+
+kill container --> docker container kill (container id)
+
+Delete All Contaner --> docker container prune
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Usage:  docker system:
+
+
+docker system df,events, info, prune
+
+df -> docker disk space 
+events -> if container run or stop it happaned 
+prune -> remove all un use image and container ex -> (docker system prune -a)
+info -> lot of information from container version, client, ram etc...
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+syntaxt for docker image convert:
+
+FROM openjdk:18
+COPY target/spring-boot.jar /app.jar
+CMD ["java", "-jar", "/app.jar"]
+
+===================================================
+
+go to cmd or terminal:
+
+docker build -t app.jar .
+
+===================
+
+docker push cmd:
+
+ docker push spring-boot
+==============================
+
+stats -> docker stats (container id) -> use stats of container 
+
+ram allocation of container -> docker run -d -p 5000:5000 -m 512m (ur image name) if u use run 512gb ram to this container
+
+CPU allocation of container -> docker run -d -p 5000:5000 -m 512m --cpu-quota=50000 (ur image name) if u use run 512gb ram and cpu 50% cpu to this container
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+image build -> docker build -t [image name:version] .
+
+push docker hub -> docker push [image name:version]
+
+

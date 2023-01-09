@@ -1,0 +1,11 @@
+CREATE DATABASE Login;
+
+use Login
+
+CREATE TABLE Login(userName varchar(255), password varchar(255));
+
+INSERT INTO Login(userName, password) VALUES('admin', 'admin');
+
+CREATE TABLE Student(department varchar(255), college varchar(255), rollNo int, sName varchar(255), sNo int);
+
+INSERT INTO Student(sNo, sName, rollNo, department, college) VALUES(?,?,?,?,?);

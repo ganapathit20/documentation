@@ -1,0 +1,9 @@
+== --> reference (or) address comparision
+
+.equal() --> content comparision
+
+String --> immutable and if content is fixed it use and not thread safe
+
+String buffer --> mutable and if content is not fixed it use and thread safe
+
+String builder --> mutable and if content is fixed it use and if mutable import but thread safe not importance use this

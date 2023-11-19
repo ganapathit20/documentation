@@ -1,0 +1,79 @@
+--------------Producer.java (Sends messages to a queue)-----------
+
+import org.apache.activemq.ActiveMQConnectionFactory;
+
+import javax.jms.*;
+
+public class Producer {
+    public static void main(String[] args) {
+        try {
+            // Create a connection factory
+            ConnectionFactory connectionFactory = new ActiveMQConnectionFactory("tcp://localhost:61616");
+
+            // Create a connection
+            Connection connection = connectionFactory.createConnection();
+            connection.start();
+
+            // Create a session
+            Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
+
+            // Create a destination (queue)
+            Destination destination = session.createQueue("myQueue");
+
+            // Create a message producer
+            MessageProducer producer = session.createProducer(destination);
+
+            // Create and send a message
+            TextMessage message = session.createTextMessage("Hello, ActiveMQ!");
+            producer.send(message);
+
+            // Clean up resources
+            producer.close();
+            session.close();
+            connection.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+
+---------------------------Consumer.java (Receives messages from the same queue)-----------------------------
+
+
+import org.apache.activemq.ActiveMQConnectionFactory;
+
+import javax.jms.*;
+
+public class Consumer {
+    public static void main(String[] args) {
+        try {
+            // Create a connection factory
+            ConnectionFactory connectionFactory = new ActiveMQConnectionFactory("tcp://localhost:61616");
+
+            // Create a connection
+            Connection connection = connectionFactory.createConnection();
+            connection.start();
+
+            // Create a session
+            Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
+
+            // Create a destination (queue)
+            Destination destination = session.createQueue("myQueue");
+
+            // Create a message consumer
+            MessageConsumer consumer = session.createConsumer(destination);
+
+            // Receive and process messages
+            while (true) {
+                Message message = consumer.receive();
+                if (message instanceof TextMessage) {
+                    TextMessage textMessage = (TextMessage) message;
+                    System.out.println("Received message: " + textMessage.getText());
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}

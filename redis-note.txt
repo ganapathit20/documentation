@@ -1,0 +1,197 @@
+redis-server -> run the server
+redis-cli -> redis client
+
+default port -> 6379
+
+------------STRING-------------------
+set name "exterro"
+get name 
+output -> "exterro"
+
+getrange name 0 3
+output -> "exte"
+
+//Mutiple Values insert:
+
+mset skill-1 java, skill-2 c, skill-3 c++, skill-4 spring
+mget skill-1, skill-2, skill-3, skill-4 
+output -> 1)"java" 2)"c" 3)"c++" 4)"spring"
+
+strlen java //find length
+output->4
+
+//Rename for value
+set name "Exterro inc."
+output->Exterro inc.
+
+set count 1
+get count
+output -> 1
+
+incr count 
+output->2
+
+incrby count 10
+output -> 12
+
+decr count 
+output->1
+
+decrby count 5
+output -> 6
+
+//Expire 
+
+set a 1
+
+expire a 10 //10 means seconds
+
+ttl a // check how many time remaing
+
+setex number 10 one // set expire on the way
+-------------
+keys * // use widcard query
+flushall // delete all keys
+-----------------LIST-----------------------------
+lpush country india // lpush top order insert
+lpush country usa
+
+lrange country 0 -1
+
+rpush country uk // lpush bottom order insert
+rpush country Aus
+
+llen county // length
+output-4
+
+//Remove from List use lpop remove top elements & rpop remove bottom elements 
+lpop country
+rpop country
+
+
+//index based change values
+
+lset country 0 UAE
+
+//index based get values
+
+lindex country 0
+output-"UAE"
+
+//before and after insert 
+
+linsert country before usa "new york"
+linsert country after UAE "new york"
+
+//if set exit only insert
+
+lpushx movie vikram // not insert
+lpushx country News land // insert 
+
+rpushx movie vikram // not insert
+rpushx country News land // insert 
+
+//Sorting order
+sort count ALPHA
+sort count desc ALPHA
+
+----------------SET(unique)----------------------
+sadd college ksr // single values only insert
+
+sadd college avs srm mit // multiple values insert
+
+smembers college // list all values
+
+scaed college // check length
+output-4
+
+sismember college ksr // check if present or not
+
+sdiff college university // check diffrent of two set
+
+sdiffstore newSet college university //  difference only store in other set
+
+-------------SORTED SET(Score)--------------------
+zadd user 1 name1 
+
+zadd user 2 name2 3 name3
+
+zrange user 0 -1 //list out
+
+zrange user 0 -1 withscores//show with score
+
+zcard user //list
+output-4
+
+zrem user name1 // delete 
+
+zrevrange user 0 -1 //list out reverse
+
+zscore user name1
+output-1
+
+zrevrangebyscore user 5 0 withscores//list out reverse score
+
+zincrby user 2 name2 // increse score
+
+zremrangebyscore name 3 4 // remove that 2 only
+
+---------------------HASHES------------------------------------------
+//hanshes means key value store
+hset address name ganapathi
+
+hvals address// list all values 
+
+hgetall address//list all key values
+
+hexists address name // if present or not
+
+hlen address//find length
+
+hmset address name name1 age 10 mobile 987654//store multiple key values
+
+hmget address name mobile//list mutiple fields
+
+hincrby address age 2//increse 
+
+hdel address age // delete age field
+
+hstrlen address name // particular fields length find
+
+hsetnx address age 20//if exit it will add othertwise not add
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

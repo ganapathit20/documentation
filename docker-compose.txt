@@ -1,0 +1,42 @@
+Docker engine(UI login -> hub.docker.com ) and cmd login -> docker login -u ganapathi423 both are same user name and pass below
+user name -> ganapathi423
+pass -> ganapathi@1995
+
+steps for docker image push to docker hub:
+
+1.Login to the docker.
+
+2. docker login -u darlin
+
+Tag your image build
+
+my image name here is mylocalimage and by default it has tag latest and my username is darlin as registered with docker cloud, and I created a public repository named dockerhub
+so my personal repository becomes now darlin/dockerhub and I want to push my image with tag myfirstimagepush.
+
+I tagged as below :
+
+docker tag mylocalimage:latest darlin/dockerhub:myfirstimagepush
+Pushed the image to my personal docker repository as below
+
+docker push darlin/dockerhub:myfirstimagepush
+
+And it was successfully pushed to my personal docker repo.
+
+
+---------------------------------------------------------------------------------
+Dockerfile Example
+
+FROM openjdk:8
+EXPOSE 8080
+ADD target/springboot-k8s-demo.jar springboot-k8s-demo.jar
+ENTRYPOINT ["java","-jar","/springboot-k8s-demo.jar"]
+
+
+Build docker image ---> docker build -t {your project name} .
+
+----------------------------
+
+from documentation for pushing images
+must be follow steps 1 and 2
+1.docker tag local-image:tagname new-repo:tagname
+2.docker push new-repo:tagname

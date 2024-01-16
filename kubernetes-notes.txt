@@ -1,0 +1,89 @@
+basic comments:
+
+kubectl get deployment or kubectl get deployment -o yaml
+
+kubectl get pods or kubectl get pods -o wide 
+
+kubectl get replicaset
+
+kubectl get service
+
+kubectl get namespace
+
+kubectl get ingress
+
+----------------------------------
+below comments deploy all yaml or json file 
+kubectl deploy -f ./
+----------------------------------
+
+use the comment to create deployment
+
+kubectl create deployment (provided the deployment name) --image={image name}
+
+kubectl describe deployment provided the deployment name) -> describe all about the deployment
+
+--------------------------------------------------------
+use the comments to edit or change any of in the deployment
+
+kubectl edit deployment (provided the deployment name)
+
+-------------------------------
+use the comment to ant issue view the logs to debug
+
+kubectl logs (provied the pods name) 
+
+-----------------------------
+use the comment to check inside pods
+
+kubectl exce -it (provied the pods name) --bib/bash
+
+-----------------------------
+use the comment to delete the deployment(once exce the comment all of delete)
+
+kubectl delete (provied the deployment name)
+
+==============================================
+
+use the below comment to deploy while json or yaml file
+
+kubectl apply -f {provied file name}
+----remining all same--------------
+
+---------------------------------------
+expose outside the service use the below comment
+
+minikube service {provided the service name}
+kubectl delete -f (provied file name)
+
+
+---------------------------------
+use the comments to create namespace
+
+kubectl create namespace {give namespace}
+
+kubectl delete namespace {give namespace}
+
+--------------------------------
+use the below comments to deploy into the namespace
+
+kubectl deploy -f {give the file name} --namespace={give namespace}
+
+--------------------
+use the below comments to get deploy into the namespace
+
+kubectl get deployment -n={give namespace} or --namespace={give namespace}
+
+note: once deploy file in the namespace the all remainings get in use namespace to get
+---------------------------------------------------------
+ingress enable comments
+
+minikube addons list
+
+minikube addons enable ingress
+
++++++++++++++++++++++++++++++++
+confihuration to domain name below path to edit
+
+C:\Windows\System32\drivers\etc
++++++++++++++++++++++++++++++++++
